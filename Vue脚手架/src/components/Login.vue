@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Login',
   data () {
@@ -25,7 +27,14 @@ export default {
   },
   methods: {
     login () {
-      alert('Username: ' + this.username + '\n' + 'Password: ' + this.password)
+      alert('username: ' + this.username + '\n' + 'password: ' + this.password)
+      axios.get('/static/user.json')
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   }
 }
