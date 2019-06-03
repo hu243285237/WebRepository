@@ -28,11 +28,11 @@ export default {
   methods: {
     login () {
       alert('username: ' + this.username + '\n' + 'password: ' + this.password)
-      axios.get('/static/user.json')
-        .then(function (response) {
+      axios.get('/api/myGet')
+        .then(response => {
           console.log(response)
         })
-        .catch(function (error) {
+        .catch(error => {
           console.log(error)
         })
     }
