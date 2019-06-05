@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="register">
     <h1>{{ title }}</h1>
     <div>
       <input type="text" v-model="username" placeholder=" 用户名">
@@ -8,7 +8,7 @@
       <input type="password" v-model="password" placeholder=" 密码">
     </div>
     <div>
-      <button @click="login">点击登录</button>
+      <button @click="register">点击注册</button>
     </div>
   </div>
 </template>
@@ -17,18 +17,19 @@
 import axios from 'axios'
 
 export default {
-  name: 'Login',
+  name: 'Register',
   data () {
     return {
-      title: 'Login',
+      title: 'Register',
       username: '',
       password: ''
     }
   },
   methods: {
-    login () {
+    register () {
       alert('username: ' + this.username + '\n' + 'password: ' + this.password)
-      axios.get('/api/login')
+      var user = { name: this.username, pwd: this.password }
+      axios.post('/api/register', user)
         .then(response => {
           console.log(response)
         })
@@ -42,7 +43,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.login
+.register
 {
   background-color: beige;
 }
