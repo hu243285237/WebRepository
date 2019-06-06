@@ -10,6 +10,11 @@
     <div>
       <button @click="register">点击注册</button>
     </div>
+    <div>
+      <router-link to="/">
+        <p>返回登录</p>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -27,14 +32,13 @@ export default {
   },
   methods: {
     register () {
-      alert('username: ' + this.username + '\n' + 'password: ' + this.password)
       var user = { name: this.username, pwd: this.password }
       axios.post('/api/register', user)
         .then(response => {
-          console.log(response)
+          alert(response.data === true ? '注册成功！' : '注册失败！')
         })
         .catch(error => {
-          console.log(error)
+          alert(error)
         })
     }
   }
@@ -43,24 +47,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.register
-{
+.register {
   background-color: beige;
 }
 
-input
-{
+input {
   width: 200px;
   height: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-button
-{
+button {
   width: 200px;
   height: 30px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+p {
+  width: 50px;
+  font-size: 10px;
+  color: gray;
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration-line: underline;
+  cursor: pointer;
 }
 </style>
