@@ -1,6 +1,8 @@
-# vue-demo
+# Vue注册登录案例
 
-> description is demo
+> 使用Vue实现的注册登录实例
+> 跟Server_Sample项目搭配使用
+> Vue实现前端页面，Node实现数据库操作
 
 ## Build Setup
 
