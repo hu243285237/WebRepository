@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<!-- 
+/* 
     每当定义一个对象（函数也是对象）时，对象重都会包含一些预定的属性
 
     每个函数对象都有一个prototype属性
@@ -23,21 +20,17 @@
     可以把原型对象（Person.prototype）看成是构造函数（Person）的一个实例
 
     每个对象都有__proto__属性，但只有函数对象才有prototype
- -->
+*/
 
-<script>
-    function Person() { }
-    Person.prototype.name = 'hh123';
-    Person.prototype.age = 24;
-    Person.prototype.sayName = function () { alert(this.name) }
+function Person() { }
+Person.prototype.name = 'hh123';
+Person.prototype.age = 24;
+Person.prototype.sayName = function () { alert(this.name) }
 
-    var p1 = new Person('pp1', 21);
-    var p2 = new Person('pp2', 22);
+var p1 = new Person('pp1', 21);
+var p2 = new Person('pp2', 22);
 
-    console.log(Person.prototype);
+console.log(Person.prototype);
 
-    console.log(p1);
-    console.log(p2);
-</script>
-
-</html>
+console.log(p1);
+console.log(p2);
