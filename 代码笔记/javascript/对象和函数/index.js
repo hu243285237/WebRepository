@@ -12,8 +12,8 @@ var f3 = new Function();
 
 
 
-console.log(typeof o1); // object
-console.log(typeof o2); // object
+console.log(o1); // object
+console.log(o2); // object
 console.log(typeof o3); // object
 
 console.log(typeof f1); // function
