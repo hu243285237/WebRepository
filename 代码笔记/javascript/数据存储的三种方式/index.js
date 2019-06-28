@@ -33,7 +33,7 @@
 
     4.作用域不同
 
-    sessionStorage不在不同的浏览器共享数据，即使是同一个页面
+    sessionStorage不在不同的浏览器和窗口中共享数据，即使是同一个页面
 
     cookie、localStorage在所有同源窗口中都是共享的
 */
@@ -55,7 +55,7 @@ alert('localStorage: ' + count01);
 //////////////////////////////////////////////////////////////////////////////////////
 
 // sessionStorage案例
-// 关闭浏览器会重置数据
+// 关闭窗口会重置数据，每个窗口独占一份数据
 if (sessionStorage.getItem('count02') === null) {
     sessionStorage.setItem('count02', 0);
 }
