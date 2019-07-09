@@ -116,3 +116,37 @@ var a10 = [21, 35, 65, 12, 32];
 var b10 = a10.sort();
 console.log(a10);
 console.log(b10);
+
+/////////////////////////////////////////////////////////////////
+
+// array.map(function(currentValue, index, arr), thisValue)
+// 第一个参数（函数）必选，数组中的每个元素都会执行这个函数，
+// currentValue必选，当前元素的值
+// index可选，当前元素的索引值
+// arr可选，当前元素属于的数组对象
+// 第二个参数（thisValue）可选，对象作为该执行回调时使用，传递给函数，用作 "this" 的值
+// 如果省略了 thisValue，或者传入 null、undefined，那么回调函数的 this 为全局对象
+// 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值
+// 方法按照原始数组元素顺序依次处理元素
+// 注意：方法不会对空数组进行检测
+// 注意：方法不会改变原始数组
+var a11 = [1, 2, 3, 4, 5];
+var b11 = a11.map((item)=>{
+    return item * item;
+});
+console.log(a11);
+console.log(b11); // [1, 4, 9, 16, 25]
+
+/////////////////////////////////////////////////////////////////
+
+// array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+// 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值
+// reduce() 可以作为一个高阶函数，用于函数的 compose
+// 注意: reduce() 对于空数组是不会执行回调函数的
+// reduceRight() 遍历顺序与 reduce() 相反
+var a12 = [1, 2, 3, 4, 5];
+var b12 = a12.reduce((pre, cur)=>{
+    return pre + cur;
+});
+console.log(a12);
+console.log(b12); // 15
