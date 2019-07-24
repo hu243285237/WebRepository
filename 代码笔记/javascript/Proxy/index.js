@@ -36,3 +36,36 @@ pro.name;
 
 // 输出为 set success
 pro.age = 18;
+
+//----------------------------------------------------------------------
+
+// zcg 给的一道题
+// 关键点：
+// pipe(3) 返回一个 oproxy 对象
+// funcStack 数组存放 double, pow, reverseInt 这三个函数
+// 最后 get 时通过 reduce 方法逐步执行上面三个函数
+// "63" | 0 = 63
+var pipe = (function () {
+    return function (value) {
+      var funcStack = [];
+      var oproxy = new Proxy({} , {
+        get : function (pipeObject, fnName) {
+          if (fnName === 'get') {
+            return funcStack.reduce(function (val, fn) {
+              return fn(val);
+            },value);
+          }
+          funcStack.push(window[fnName]);
+          return oproxy;
+        }
+      });
+  
+      return oproxy;
+    }
+  }());
+  
+  var double = n => n * 2;
+  var pow    = n => n * n;
+  var reverseInt = n => n.toString().split("").reverse().join("") | 0;
+  
+  pipe(3).double.pow.reverseInt.get; // 63
