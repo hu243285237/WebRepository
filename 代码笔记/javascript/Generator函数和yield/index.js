@@ -41,3 +41,28 @@ console.log(appleStore.next()); // { value: 3, done: false }
 console.log(appleStore.next()); // { value: 7, done: false }
 console.log(appleStore.next()); // { value: 5, done: false }
 console.log(appleStore.next()); // { value: undefined, done: true }
+
+//---------------------------------------------------------------------------------------
+
+// 案例
+
+function* foo(x) {
+    var y = 2 * (yield(x + 1));
+    var z = yield(y / 3);
+    return x + y + z;
+}
+
+// 第一次运行 a.next() 时，yield 返回的 value 为 5 + 1 = 6，
+// 遍历器未执行完毕，所以 done 为 false
+// 第二次运行 a.next() 时没有带参数，所以第一个 yield 的值为 undefined，y = 2 * undefined = NaN
+// 遍历器未执行完毕，done 为 false
+// 第三次运行 a.next() 时也没有带参数，所以第二个 yield 的值也为 undefined，z = undefined
+// 最后 return 时 x + y + z = 5 + NaN + undefined = NaN
+// 同时有了 return 值，遍历器执行完毕，所以 done 为 true
+
+var a =  foo(5);
+console.log(a.next()); // {value: 6, done: false}
+console.log(a.next()); // {value: NaN, done: false}
+console.log(a.next()); // {value: NaN, done: true}
+
+//---------------------------------------------------------------------------------------
