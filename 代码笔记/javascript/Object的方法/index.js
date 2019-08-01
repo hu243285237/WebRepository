@@ -77,3 +77,29 @@ console.log(a2.mySchool); // undefined
 
 delete a2.myName; // 删除失败，因为 configurable 默认为 false
 console.log(a2.myName); // hu_get
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+var a3 = {
+    name1: "qwe",
+    name2: "asd"
+}
+
+Object.defineProperty(a3, "name3", {
+    value: "zxc",
+    enumerable: false
+});
+
+// Object.keys(obj)
+// 返回一个所有元素为字符串的数组，其元素来自于从给定的 object 上面可直接枚举的属性
+// 如果属性的 enumerable 为 false 则无法得到
+
+console.log(Object.keys(a3)); // [ "name1", "name2" ]
+
+// Object.values(obj)
+// 返回一个数组，其元素是在对象上找到的可枚举属性值
+// 如果属性的 enumerable 为 false 则无法得到
+
+console.log(Object.values(a3)); // [ "qwe", "asd" ]
+
+///////////////////////////////////////////////////////////////////////////////////////
