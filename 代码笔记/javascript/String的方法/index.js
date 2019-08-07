@@ -36,3 +36,4 @@ console.log(str3.concat("kkk", "fff")); // huabc123kkkfff
 // 如果它被找到，返回第一个匹配字符的位置，否则返回 -1
 // 可选参数 position 设置从指定位置开始查找
 var str4 = "qwerty";
+console.log(str4.indexOf("er")); // 2
