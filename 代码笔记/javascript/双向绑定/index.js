@@ -117,19 +117,15 @@ Watcher.prototype.get = function () {
 //-----------------------------------------------------
 
 // 测试
-function mVue(options, prop) {
+function mVue(options) {
     this.$options = options;
     this.$data = options.data;
-    this.$prop = prop;
     this.$el = document.querySelector(options.el);
     this.init();
 }
 mVue.prototype.init = function () {
     observer(this.$data);
-    this.$el.textContent = this.$data[this.$prop];
-    new Watcher(this, this.$prop, value => {
-        this.$el.textContent = value;
-    });
+    new Compile(this);
 }
 
 const vm = new mVue({
@@ -137,10 +133,10 @@ const vm = new mVue({
     data: {
         name: "HWJ"
     }
-}, "name");
+});
 
 //-----------------------------------------------------
-/*
+
 // 3. 解析器 Compile
 
 function Compile (vm) {
@@ -161,5 +157,35 @@ Compile.prototype.nodeFragment = function (el) {
     }
     return fragment;
 }
-*/
+Compile.prototype.compileNode = function (fragment) {
+    let childNodes = this.fragment.childNodes;
+    [...childNodes].forEach(node => {
+        let reg = /\{(.*)\}/;
+        let text = node.textContent;
+        if (this.isElementNode(node)) {
+            this.compileNode(node); // 渲染指令模板
+        }
+        else if (this.isTextNode(node) && reg.test(text)) {
+            let prop = RegExp.$1;
+            this.compileText(node, prop); // 渲染 {{}} 模板
+        }
+
+        if (node.childNodes && node.childNodes.length) {
+            this.compileNode(node);
+        }
+    });
+}
+Compile.prototype.compile = function () {
+    let nodeAttrs = node.attributes;
+    [...nodeAttrs].forEach(attr => {
+        let name = attr.name;
+        if (this.isDirective(name)) {
+            let value = attr.value;
+            if (name === "v-model") {
+                this.compileModel(node, value);
+            }
+        }
+    });
+}
+
 //-----------------------------------------------------
