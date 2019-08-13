@@ -160,6 +160,7 @@ console.log(b12); // 15
 // thisValue 可选，对象作为该执行回调时使用，传递给函数，用作 "this" 的值
 // 如果省略了 thisValue，则 "this" 的值为 "undefined"
 // filter 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素
+// filter 根据返回值是 true 还是 false 决定保留还是丢弃该元素
 // 注意：filter 不会对空数组进行检测
 // 注意：filter 不会改变原始数组
 var a13 = [1, 2, 3, 2, 3, 5, 2, 2];
