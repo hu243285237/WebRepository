@@ -150,3 +150,14 @@ var b12 = a12.reduce((pre, cur)=>{
 });
 console.log(a12);
 console.log(b12); // 15
+
+/////////////////////////////////////////////////////////////////
+
+// array.filter(function(currentValue, index, arr), thisValue)
+// filter 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素
+// 注意：filter 不会对空数组进行检测
+// 注意：filter 不会改变原始数组
+var a13 = [1, 2, 3, 2, 3, 5, 2, 2];
+console.log(a13.filter((val) => {
+    return val >= 3;
+})); // [3, 3, 5]
