@@ -33,7 +33,7 @@
     let b1 = 22;
 }
 //console.log(a1); // 11
-//console.log(b1); // 报错
+//console.log(b1); // Uncaught ReferenceError: b1 is not defined
 
 //////////////////////////////////////////////////////////
 
@@ -65,3 +65,13 @@ a4.name = "asdasd";
 //b4 = 456; // 报错
 
 console.log(a4); // "asdasd"
+
+//////////////////////////////////////////////////////////
+
+console.log(a5); // undefined
+console.log(b5); // Uncaught ReferenceError:Cannot access 'b5' before initialization
+
+var a5 = 5;
+let b5 = 5;
+
+//////////////////////////////////////////////////////////
