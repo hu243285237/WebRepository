@@ -38,6 +38,14 @@ console.log(10 * '20'); // 200 number
 console.log('10' * '20'); // 200 number
 console.log('10' * 'one'); // NaN
 console.log('10' - '20'); // -10 number
+console.log(10 + null); // 10 number
+console.log('10' + null); // 10null string
+console.log('one' + undefined); // oneundefined string
+console.log(null + false); // 0 number
+console.log(NaN + '10'); // NaN10 string
+console.log(NaN + 10); // NaN
+console.log(null + undefined); // NaN
+console.log(10 + undefined); // NaN
 
 // 关于 ==
 
