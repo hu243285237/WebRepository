@@ -37,3 +37,37 @@ console.log(str3.concat("kkk", "fff")); // huabc123kkkfff
 // 可选参数 position 设置从指定位置开始查找
 var str4 = "qwerty";
 console.log(str4.indexOf("er")); // 2
+
+//////////////////////////////////////////////////////////
+
+// string.lastIndexOf(searchString, position)
+// 和 indexOf 方法类似，只不过它是从该字符串的末尾开始查找
+// 注意不是从后面数，返回的 index 还是从前数的
+var str5 = "qwerty";
+console.log(str5.lastIndexOf("er")); // 2
+
+//////////////////////////////////////////////////////////
+
+// string.localCompare(otherString)
+// 这个方法用于比较两个字符串
+// 怎么比较的规则没有详细说明
+// 如果 string 比 otherString 小，那么结果为负数
+// 如果它们相等，那么结果为 0
+// 这类似于 array.sort 比较函数的约定
+// a 比 b 和 c 小，返回 -1
+var str6_1 = "a";
+var str6_2 = "b";
+var str6_3 = "c";
+console.log(str6_1.localeCompare(str6_2)); // -1
+console.log(str6_1.localeCompare(str6_3)); // -1
+console.log(str6_2.localeCompare(str6_3)); // -1
+console.log(str6_3.localeCompare(str6_2)); // 2
+console.log(str6_3.localeCompare(str6_1)); // 1
+
+//////////////////////////////////////////////////////////
+
+// string.match(regexp)
+// 这个方法让字符串和一个正则表达式进行匹配
+var str7 = "999_hello_world_12345";
+console.log(str7.match("world")); // 返回一个数组 [有点复杂]
+console.log(str7.match(/\d+/g)); // 正则检索数字 [999, 12345]
