@@ -71,3 +71,13 @@ console.log(str6_3.localeCompare(str6_1)); // 1
 var str7 = "999_hello_world_12345";
 console.log(str7.match("world")); // 返回一个数组 [有点复杂]
 console.log(str7.match(/\d+/g)); // 正则检索数字 [999, 12345]
+
+//////////////////////////////////////////////////////////
+
+// string.replace(searchValue, replaceValue)
+// 这个方法对 string 进行查找和替换操作，并返回一个新的字符串
+// 参数 searchValue 可以是一个字符串或一个正则表达式对象
+// 如果 searchValue 是字符串，它只会在第一次出现的地方
+// 如果 searchValue 是正则表达式，则会替换所有匹配的结果
+var str8 = "abccc6";
+console.log(str8.replace("c", "q")); // abqcc6
