@@ -81,3 +81,26 @@ console.log(str7.match(/\d+/g)); // 正则检索数字 [999, 12345]
 // 如果 searchValue 是正则表达式，则会替换所有匹配的结果
 var str8 = "abccc6";
 console.log(str8.replace("c", "q")); // abqcc6
+
+//////////////////////////////////////////////////////////
+
+// string.search(regexp)
+// 这个方法和 indexOf 方法类似
+// 只是它接受一个正则表达式对象作为参数，而不是一个字符串
+// 如果找到匹配，则返回第一个匹配的首字符位置
+// 如果没有找到匹配，则返回 -1
+var str9 = 'abcdefg"1234567';
+console.log(str9.search(/["']/)); // 7
+
+//////////////////////////////////////////////////////////
+
+// string.slice(start, end)
+// 这个方法复制 string 的一部分来构造一个新的字符串
+// 如果 start 参数是负数，它将与 string.length 相加
+// end 参数是可选的，它将与 string.length 相加
+// end 参数等于你要取的最后一个字符的位置值加上 1
+// 要想得到从位置 p 开始的 n 个字符，就用 string.slice(p, p + n)
+var str10 = "abcde";
+console.log(str10.slice(1)); // bcde
+console.log(str10.slice(2)); // cde
+console.log(str10.slice(2, 4)); // cd
