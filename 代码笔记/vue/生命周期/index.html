@@ -1,0 +1,80 @@
+<!--
+
+    生命周期：
+
+    beforeCreate -> created ->
+
+    beforeMount -> mounted ->
+
+    beforeUpdate -> updated ->
+
+    beforeDestroy -> destroyed
+
+    ----------------------------------------------------------------
+
+    在 beforeCreate 函数执行时，data 和 methods 中的数据都还没初始化
+
+    在 created 函数执行时，data 和 methods 的数据已经初始化完毕
+
+    在 beforeMount 函数执行时，模板已在内存中编译好了，但还未挂载到页面中去，页面此时还是旧的
+
+    在 mounted 函数执行后，就代表整个 vue 实例已经初始化完毕，进入到运行阶段
+
+    beforeUpdate 和 update 只有当数据发生改变时才会触发
+
+    beforeUpdate 执行时，页面中的 data 数据是最新的，但页面尚未和最新的数据保持同步
+
+    updated 执行时，页面和 data 数据已经保持同步，都是最新的数据
+
+    当执行到 beforeDestroy 时，Vue 实例已从运行阶段进入到销毁阶段，但这时还没真正的销毁，data 和 methods 都可以用
+
+    当 destroyed 函数实行时，组件已经被完全销毁了，所有数据和方法都已经不可用了
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <button v-on:click="count += 1">{{ count }}</button>
+        </div>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    count: 0
+                },
+                beforeCreate: function () {
+                    console.log('beforeCreate')
+                },
+                created: function () {
+                    console.log('created')
+                },
+                beforeMount: function () {
+                    console.log('beforeMount')
+                },
+                mounted: function () {
+                    console.log('mounted')
+                },
+                beforeUpdate: function () {
+                    console.log('beforeUpdate')
+                },
+                updated: function () {
+                    console.log('updated')
+                },
+                beforeDestroy: function () {
+                    console.log('beforeDestroy')
+                },
+                destroyed: function () {
+                    console.log('destroyed')
+                }
+            })
+        </script>
+    </body>
+</html>
