@@ -104,3 +104,17 @@ var str10 = "abcde";
 console.log(str10.slice(1)); // bcde
 console.log(str10.slice(2)); // cde
 console.log(str10.slice(2, 4)); // cd
+
+//////////////////////////////////////////////////////////
+
+// string.toLowerCase()
+// 返回一个新字符串，这个字符串所有的字幕都被转为小写
+var str11 = "ABCde";
+console.log(str11.toLocaleLowerCase()); // abcde
+
+//////////////////////////////////////////////////////////
+
+// string.toUpperCase()
+// 返回一个新字符串，这个字符串所有的字幕都被转为大写
+var str12 = "ABCde";
+console.log(str11.toLocaleUpperCase()); // ABCDE
