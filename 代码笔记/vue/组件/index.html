@@ -1,0 +1,47 @@
+<!--
+
+    组件是可复用的 Vue 实例
+
+    因为组件是可复用的 Vue 实例，所以它们与 new Vue 接收相同的选项
+    
+    例如 data、computed、watch、methods 以及生命周期钩子等，仅有的例外是像 el 这样根实例特有的选项
+
+    可以将组件进行任意次数的复用
+
+    注意当点击按钮时，每个组件都会各自独立维护它的 count，因为你每用一次组件，就会有一个它的新实例被创建
+
+    一个组件的 data 选项必须是一个函数，而不是对象，因此每个实例可以维护一份被返回对象的独立的拷贝
+
+    有两种组件的注册类型，全局注册和局部注册
+
+    Vue.component 是全局注册
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="components-demo">
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+        </div>
+        <script>
+            Vue.component('button-counter', {
+                data: function () {
+                    return {
+                        count: 0
+                    }
+                },
+                template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+            })
+            var app = new Vue({
+                el: '#components-demo'
+            })
+        </script>
+    </body>
+</html>
