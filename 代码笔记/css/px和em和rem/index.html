@@ -1,0 +1,100 @@
+<!-- 
+
+    px：固定像素，一旦设置了就无法因为适应页面大小而改变
+
+    em 和 rem：是相对长度，具有灵活性，更适用于响应式布局
+
+    em 和 rem 的区别：em 相对于父元素，rem 相对于根元素
+
+    rem 中 r 的意思是 root（根）
+
+    ----------------------------------------------------------
+
+    em：
+    
+    子元素字体大小的 em 是相对于父元素字体大小
+
+    元素的 width/height/padding/margin 用 em 的话是相对于该元素的 font-size
+
+    经验：
+    
+    chrome 最小字体的大小是 12px，当字体小于这个值时，会被默认设置为 12px
+
+    chrome 默认的字体大小是 12px，也就是 1em 默认为 12px
+
+    ----------------------------------------------------------
+
+    rem：
+    
+    全部的长度都相对于根元素，即 <html> 元素
+
+    通常做法是给 html 元素设置一个字体大小，然后其他元素的长度单位就为 rem
+
+ -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            #div1 {
+                width: 10em; /* 400px */
+                height: 10em; /* 400px */
+                border: solid 1px black;
+                font-size: 40px;
+            }
+            #p1 {
+                width: 10em; /* 200px */
+                height: 10em; /* 200px */
+                border: solid 1px red;
+                font-size: 0.5em; /* 20px */
+            }
+            #span1 {
+                width: 10em;
+                height: 10em;
+                border: solid 1px blue;
+                font-size: 0.5em;
+                display: block;
+            }
+
+            html {
+                font-size: 12px;
+            }
+            #div2 {
+                width: 40rem; /* 480px */
+                height: 40rem; /* 480px */
+                border: solid 1px black;
+                font-size: 4rem; /* 48px */
+            }
+            #p2 {
+                width: 20rem; /* 240px */
+                height: 20rem; /* 240px */
+                border: solid 1px red;
+                font-size: 2rem; /* 24px */
+            }
+            #span2 {
+                width: 10rem;
+                height: 10rem;
+                border: solid 1px blue;
+                font-size: 1rem;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div1">
+            I am div 1
+            <p id="p1">
+                I am paragraph 1
+                <span id="span1">I am span 1</span>
+            </p>
+        </div>
+        <div id="div2">
+            I am div 2
+            <p id="p2">
+                I am paragraph 2
+                <span id="span2">I am span 2</span>
+            </p>
+        </div>
+    </body>
+</html>
