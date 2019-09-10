@@ -108,13 +108,29 @@ console.log(str10.slice(2, 4)); // cd
 //////////////////////////////////////////////////////////
 
 // string.toLowerCase()
-// 返回一个新字符串，这个字符串所有的字幕都被转为小写
+// 返回一个新字符串，这个字符串所有的字母都被转为小写
 var str11 = "ABCde";
 console.log(str11.toLocaleLowerCase()); // abcde
 
 //////////////////////////////////////////////////////////
 
 // string.toUpperCase()
-// 返回一个新字符串，这个字符串所有的字幕都被转为大写
+// 返回一个新字符串，这个字符串所有的字母都被转为大写
 var str12 = "ABCde";
-console.log(str11.toLocaleUpperCase()); // ABCDE
+console.log(str12.toLocaleUpperCase()); // ABCDE
+
+//////////////////////////////////////////////////////////
+
+// string.toLocaleLowerCase()
+// 使用本地化规则把字符串所有字母转为小写
+// 比如在土耳其语 'I' 会转换为 '1'，而不是 'i'
+var str13 = 'YUIOP';
+console.log(str13.toLocaleLowerCase());
+
+//////////////////////////////////////////////////////////
+
+// string.toLocaleUpperCase()
+// 使用本地化规则把字符串所有字母转为大写
+// 比如在土耳其语 'i' 会转换为 'İ'，而不是 'I'
+var str13 = 'yuiop';
+console.log(str13.toLocaleUpperCase());
