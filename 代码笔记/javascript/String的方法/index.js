@@ -132,5 +132,21 @@ console.log(str13.toLocaleLowerCase());
 // string.toLocaleUpperCase()
 // 使用本地化规则把字符串所有字母转为大写
 // 比如在土耳其语 'i' 会转换为 'İ'，而不是 'I'
-var str13 = 'yuiop';
-console.log(str13.toLocaleUpperCase());
+var str14 = 'yuiop';
+console.log(str14.toLocaleUpperCase());
+
+//////////////////////////////////////////////////////////
+
+// String.fromCharCode(char...)
+// 此方法会根据一串数字编码返回一个字符串
+// 注意这是 String 的方法
+var str15 = String.fromCharCode(99, 97, 116);
+console.log(str15); // cat
+
+//////////////////////////////////////////////////////////
+
+// string.substring(start, end)
+// 这个方法和 slice 方法一样，只是它不能处理负数参数
+// 没有任何理由使用 substring，请用 slice 代替它
+var str16 = "abc12345";
+console.log(str16.substring(1, 2)); // b
