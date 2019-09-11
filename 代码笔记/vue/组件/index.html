@@ -16,6 +16,8 @@
 
     Vue.component 是全局注册
 
+    在 components 属性中定义的是局部注册
+
 -->
 
 <!DOCTYPE html>
@@ -26,9 +28,11 @@
         <script src="https://unpkg.com/vue/dist/vue.js"></script>
     </head>
     <body>
-        <div id="components-demo">
+        <div id="app">
             <button-counter></button-counter>
             <button-counter></button-counter>
+            <component-a></component-a>
+            <component-b></component-b>
         </div>
         <script>
             Vue.component('button-counter', {
@@ -40,7 +44,15 @@
                 template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
             })
             var app = new Vue({
-                el: '#components-demo'
+                el: '#app',
+                components: {
+                    'component-a': {
+                        template: '<p>it is component-a</p>'
+                    },
+                    'component-b': {
+                        template: '<p>it is component-b</p>'
+                    }
+                }
             })
         </script>
     </body>
