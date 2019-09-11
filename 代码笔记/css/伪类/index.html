@@ -1,0 +1,50 @@
+<!-- 
+
+    伪类：同一个标签，根据其不同的状态，有不同的样式
+
+    伪类选择器分为两种：
+    
+    1. 静态伪类：只能用于超链接的样式
+
+        :link       超链接点击之前
+
+        :visited    链接被访问过后
+
+    2. 动态伪类：所有标签都适用的样式
+
+        :hover      鼠标放在标签上时
+
+        :active     鼠标点击标签但是不松手时
+
+        :focus      某个标签获得焦点时，比如某个输入框获得焦点
+
+ -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            h1:hover {
+                color: brown;
+            }
+            h1:active {
+                color: blueviolet;
+            }
+            input:focus {
+                border: 2px solid red;
+            }
+            a:link {
+                color: aquamarine;
+            }
+            a:visited {
+                color: violet;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hello world</h1>
+        <input>
+        <a href="http://www.baidu.com">www.baidu.com</a>
+    </body>
+</html>
