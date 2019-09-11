@@ -1,0 +1,47 @@
+<!-- 
+
+    伪元素由两个冒号开头 "::"
+
+    CSS2 中已存的伪元素仍然可以使用一个冒号 ":" 的语法
+    
+    但 CSS3 中新增的伪元素必须使用两个冒号
+
+    伪元素默认是行级元素
+
+    ::before        在元素前添加元素
+
+    ::after         在元素后添加元素
+
+    ::first-letter  文本首字母设置特殊样式
+
+    ::first-line    文本首行设置特殊样式
+
+ -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            p {
+                width: 200px;
+            }
+            p::before {
+                content: "ABC say "
+            }
+            p::after {
+                content: ",you say good!"
+            }
+            p::first-letter {
+                font-size: 24px;
+                color: brown;
+            }
+            p::first-line {
+                color: cadetblue;
+            }
+        </style>
+    </head>
+    <body>
+        <p>hello world</p>
+    </body>
+</html>
