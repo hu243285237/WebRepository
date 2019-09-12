@@ -150,3 +150,16 @@ console.log(str15); // cat
 // 没有任何理由使用 substring，请用 slice 代替它
 var str16 = "abc12345";
 console.log(str16.substring(1, 2)); // b
+
+//////////////////////////////////////////////////////////
+
+// string.split(separator, limit)
+// split 的意思是分割
+// 这个方法用来将 string 分割成字符串片段数组
+// 可选参数 limit 可以限制被分割的片段数量
+// separator 的意思是分离器
+// separator 参数可以是一个字符串或一个正则表达式
+// 如果 separator 是一个空字符，则会返回一个单字符数组
+var str17 = "abcd.12.34";
+console.log(str17.split("", 3)); // ["a", "b", "c"]
+console.log(str17.split(".")) // ["abcd", "12", "34"]
