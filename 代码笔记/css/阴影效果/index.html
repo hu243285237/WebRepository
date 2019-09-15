@@ -1,0 +1,60 @@
+<!-- 
+
+    阴影效果是 CSS3 添加的
+
+    阴影主要有两类：
+    
+    text-shadow （文字阴影）
+
+    box-shadow （块状元素阴影）
+
+    ----------------------------------------------------
+
+    text-shadow 的如下参数分别代表 x方向的偏移值 y方向的偏移值 阴影的模糊程度 阴影的颜色
+
+    若文字颜色浅于背景颜色，则可为文字左上方添加深色阴影来形成内浮雕效果
+
+    ----------------------------------------------------
+
+    box-shadow 前两个参数分别代表左右和上下的偏移，第三个参数为模糊程度，第四个参数为颜色
+
+    除此之外比 text-shadow 还多了两个可选参数
+
+    spread 代表阴影的尺寸，默认值为 0，spread 参数的位置在第四位
+
+    还有个可选参数为 inset （默认为 outset），设置这一参数阴影可由外部转为内部
+
+ -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            h1 {
+                text-shadow: 0px 8px 5px rgba(0, 179, 170, 0.5);
+            }
+            h2 {
+                color: aquamarine;
+                text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.7);
+            }
+            div {
+                width: 200px;
+                height: 100px;
+                box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+            }
+            p {
+                width: 200px;
+                height: 100px;
+                margin-top: 50px;
+                box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.5) inset;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Article</h1>
+        <h2>Article</h2>
+        <div>abcde</div>
+        <p>12345</p>
+    </body>
+</html>
