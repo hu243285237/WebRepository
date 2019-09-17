@@ -1,0 +1,55 @@
+<!--
+
+    父组件可以使用 props 把数据传给子组件
+
+    子组件可以使用 $emit 触发父组件的自定义事件
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <h1>{{ province }}</h1>
+            <br>
+            <city :province="province" @show="updateProvince"></city>
+        </div>
+
+        <script>
+            // 子组件
+            Vue.component('city', {
+                props: ['province'], // 用来接收父组件传给子组件的数据
+                methods: {
+                    select (val) {
+                        this.$emit('show', val) // select 事件触发后，自动触发 show 事件
+                    }
+                },
+                template: 
+                    `<div>
+                        <h3>父组件传给子组件的 province: {{ province }} </h3>
+                        <button @click="select('深圳')">点击此处将 ‘深圳’ 发射给父组件</button>
+                    </div>`
+            })
+
+            // 父组件
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    province: 'GuangDong'
+                },
+                methods: {
+                    updateProvince (val) {
+                        this.province += val
+                        console.log(this.province)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
