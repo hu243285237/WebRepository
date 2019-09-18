@@ -1,0 +1,64 @@
+<!--
+
+    table: 表格
+
+    tr 元素定义表格行，th 元素定义表头，td 元素定义表格单元
+
+    <tr> 是 table row 的缩写，表格中的一行
+
+    <th> 是 table header cell 的缩写，表头单元格
+
+    <td> 是 table data cell 的缩写，单元格
+
+    ----------------------------------------------------------------
+    
+    table 的属性：
+    
+    border 表格边框的宽度
+     
+    cellpadding 单元内容与边框之间空白
+     
+    cellspacing 单元格之间空白
+
+    ----------------------------------------------------------------
+
+    rowspan 跨行
+    
+    colspan 跨列
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <table border="1" cellpadding="10" cellspacing="5">
+            <tr>
+                <th rowspan="3">学校</th>
+                <th colspan="2">学院</th>
+                <th>专业</th>
+                <th>年级</th>
+                <th>班级</th>
+                <th>姓名</th>
+            </tr>
+            <tr>
+                <td>XXX</td>
+                <td>AAA</td>
+                <td>BBB</td>
+                <td>CCC</td>
+                <td>DDD</td>
+                <td>EEE</td>
+            </tr>
+            <tr>
+                <td>XXX</td>
+                <td>AAA</td>
+                <td>BBB</td>
+                <td>CCC</td>
+                <td>DDD</td>
+                <td>EEE</td>
+            </tr>
+        </table>
+    </body>
+</html>
