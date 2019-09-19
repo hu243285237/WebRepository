@@ -1,0 +1,49 @@
+<!--
+
+    $refs 是一个对象，持有已注册过 ref 的所有子组件
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <navbar ref="navbar"></navbar>
+            <pagefooter ref="pagefooter"></pagefooter>
+        </div>
+
+        <script>
+            Vue.component('navbar', {
+                template: '<h1>navbar</h1>',
+                data: function () {
+                    return {
+                        navs: [1, 2, 3]
+                    }
+                }
+            })
+
+            Vue.component('pagefooter', {
+                template: '<h1>pagefooter</h1>',
+                data: function () {
+                    return {
+                        footer: 'qwe'
+                    }
+                }
+            })
+
+            var app = new Vue({
+                el: '#app',
+                mounted: function () {
+                    console.log(this.$refs.navbar.navs)
+                    console.log(this.$refs.pagefooter.footer)
+                }
+            })
+        </script>
+    </body>
+</html>
