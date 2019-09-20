@@ -1,0 +1,37 @@
+<!--
+
+    插槽是 Vue 实现的一套内容分发的 API，将 <slot></slot> 元素作为承载分发内容的出口
+
+    没有插槽的情况下在组件标签内写一些内容是不起任何作用的
+    
+    当在组件中声明了 slot 元素后，在组件元素内写的内容就会出现在 slot 标签的位置
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <component-a>AAA</component-a>
+            <component-b>BBB</component-b>
+        </div>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                components: {
+                    'component-a': {
+                        template: '<h2><slot></slot>it is component-a</h2>'
+                    },
+                    'component-b': {
+                        template: '<h2><slot></slot>it is component-a<slot></slot></h2>'
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
