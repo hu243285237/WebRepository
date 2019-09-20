@@ -19,6 +19,7 @@
         <div id="app">
             <component-a>AAA</component-a>
             <component-b>BBB</component-b>
+            <component-c>CCC</component-c>
         </div>
         <script>
             var app = new Vue({
@@ -29,6 +30,9 @@
                     },
                     'component-b': {
                         template: '<h2><slot></slot>it is component-a<slot></slot></h2>'
+                    },
+                    'component-c': {
+                        template: '<h2>it is component-c</h2>'
                     }
                 }
             })
