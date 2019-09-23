@@ -1,0 +1,54 @@
+<!--
+
+    EventBus 又称事件总线
+
+    可以使用 EventBus 来作为沟通的桥梁，就像是所有组件共用相同的事件中心
+
+    比如可以用于兄弟组件之间传值
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <my-component-one></my-component-one>
+            <my-component-two></my-component-two>
+        </div>
+        <script>
+            const eventBus = new Vue()
+
+            Vue.component('my-component-one', {
+                data: function () {
+                    return {
+                        message: 'no change'
+                    }
+                },
+                mounted () {
+                    eventBus.$on('aMsg', (msg) => {
+                        this.message = msg
+                    })
+                },
+                template: '<p>{{ message }}</p>'
+            })
+
+            Vue.component('my-component-two', {
+                methods: {
+                    sendMessage () {
+                        eventBus.$emit('aMsg', 'changed !')
+                    }
+                },
+                template: '<button @click="sendMessage()">Click to emit message</button>'
+            })
+
+            var app = new Vue({
+                el: '#app'
+            })
+        </script>
+    </body>
+</html>
