@@ -1,0 +1,41 @@
+<!--
+
+    使用 $emit 可以触发事件
+
+    vm.$emit(event, [...args])
+
+    使用 $on 可以监听事件
+
+    vm.$on(event, callback)
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <button @click="emit">Hello</button>
+        </div>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                methods: {
+                    emit () {
+                        this.$emit('myEvent', 'hello world')
+                    }
+                },
+                created () {
+                    this.$on('myEvent', (message) => {
+                        alert(message)
+                    })
+                }
+            })
+        </script>
+    </body>
+</html>
