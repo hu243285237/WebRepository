@@ -1,0 +1,22 @@
+<!-- 
+    
+    javascript 中 void 是一个操作符，该操作符指定要计算一个表达式但是不返回值
+
+    一般在写 a 标签的时候，格式是 <a href="#"> 链接文字 </a>,但是点击 a 链接的时候会自动跳转到页面的顶部
+    
+    如果写成 <a href="javascript:void(0)"> 链接文字 </a>，就不会跳转
+
+    当用户链接时，void(0) 计算为 0，但 Javascript 上没有任何效果
+
+    # 包含了一个位置信息，默认的锚是 #top，也就是网页的上端，所以点击后会跳到页面最上部
+
+ -->
+
+<!DOCTYPE html>
+<html>
+    <body>
+        <a href="#">It is use '#' to link</a>
+        <br>
+        <a href="javascript:void(0)">It is use 'javascript:void(0)' to link</a>
+    </body>
+</html>
