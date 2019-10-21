@@ -1,0 +1,65 @@
+<!--
+
+    a 标签的缩写就是 anchor，锚点的意思
+
+    使用锚点可快速将访问者带到指定位置
+
+    -------------------------------------
+
+    设置锚点：
+    
+    <a name="position"></a> 或者 <div id="position"></div> 或者 <h1 id="position"></h1> 等
+
+    访问锚点：
+
+    <a href="#position">xxx</a>
+
+    -------------------------------------
+
+    锚点在浏览器 URL 中会以 # 号标识
+
+    # 的英文是 hash
+
+    比如 xxxxxxxxxx/index.html#position
+
+    这个 URL 表示在 index.html 页面中的 position 位置
+
+    浏览器读取这个 URL 后，会自动将 position 位置滚动至可视区域
+
+    改变 # 号后面的参数不会触发页面的重新加载但是会留下一个历史记录，使浏览器滚动到相应的位置
+
+    比如从 index.html#position01 跳到 index.html#position02
+
+    浏览器并不会去重新向服务器请求页面，但是此操作会在浏览器的历史记录中添加一次记录，即你可以通过返回按钮回到上次的位置
+
+    -------------------------------------
+
+    # 是用来指导浏览器动作的，对服务器端完全无用，所以，HTTP 请求中不包括 #
+
+    比如，访问这个网址，http://www.example.com/index.html#print
+    
+    浏览器实际发出的请求是这样的：
+
+    GET /index.html HTTP/1.1
+    Host: www.example.com
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            div {
+                width: 500px;
+                height: 800px;
+                background-color: antiquewhite;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="#position">click to position</a>
+        <div></div>
+        <h3 id="position">here is position</h3>
+    </body>
+</html>
