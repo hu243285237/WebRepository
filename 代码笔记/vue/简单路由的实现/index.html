@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            
+        </div>
+        <script>
+            const NotFound = { template: '<p>Page Not Found</p>' }
+            const Home = { template: '<p>Home Page</p>' }
+            const About = { template: '<p>About Page</p>' }
+
+            const routes = {
+                '/': Home,
+                '/about': About
+            }
+
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    currentRoute: window.location.pathname
+                },
+                computed: {
+                    ViewComponent () {
+                        return routes[this.currentRoute] || NotFound
+                    }
+                },
+                render (h) {
+                    return h(this.ViewComponent)
+                }
+            })
+        </script>
+    </body>
+</html>
