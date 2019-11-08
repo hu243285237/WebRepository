@@ -169,3 +169,21 @@ console.log(a13.filter((val) => {
 })); // [3, 3, 5]
 
 /////////////////////////////////////////////////////////////////
+
+// array.every(callback(element, index, array), thisArg)
+// 此方法测试一个数组内的所有元素是否都能通过某个指定函数的测试
+// 返回一个布尔值
+// callback 用来测试每个元素的函数，它可以接受三个参数
+// element 必选，用于测试的当前元素值
+// index 可选，用于测试的当前索引
+// array 可选，调用 every 的当前数组
+// thisArg 执行 callback 时使用的 this 值
+var a14 = [7, 8, 4, 3, 5, 6, 5, 8, 9, 1];
+console.log(a14.every((element) => {
+    return element < 10;
+})); // true
+console.log(a14.every((element) => {
+    return element < 5;
+})); // false
+
+/////////////////////////////////////////////////////////////////
