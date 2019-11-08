@@ -172,12 +172,15 @@ console.log(a13.filter((val) => {
 
 // array.every(callback(element, index, array), thisArg)
 // 此方法测试一个数组内的所有元素是否都能通过某个指定函数的测试
-// 返回一个布尔值
+// 此方法不会改变原始数组
+// 当每一项都返回 true 时，every 最终返回 true
+// 当任何一项返回 false 时，停止遍历，every 返回 false
 // callback 用来测试每个元素的函数，它可以接受三个参数
 // element 必选，用于测试的当前元素值
 // index 可选，用于测试的当前索引
 // array 可选，调用 every 的当前数组
 // thisArg 执行 callback 时使用的 this 值
+// 注意：若收到一个空数组，则此方法在一切情况下都会返回 true
 var a14 = [7, 8, 4, 3, 5, 6, 5, 8, 9, 1];
 console.log(a14.every((element) => {
     return element < 10;
@@ -185,5 +188,22 @@ console.log(a14.every((element) => {
 console.log(a14.every((element) => {
     return element < 5;
 })); // false
+
+/////////////////////////////////////////////////////////////////
+
+// array.some()
+// 此方法测试数组中是不是至少有一个元素通过了某个指定函数的测试
+// 此方法不会改变原始数组
+// 当有一项返回 true 时，则停止遍历，some 返回 true
+// callback 用来测试每个元素的函数，它可以接受三个参数
+// element 必选，用于测试的当前元素值
+// index 可选，用于测试的当前索引
+// array 可选，调用 every 的当前数组
+// thisArg 执行 callback 时使用的 this 值
+// 注意：如果用一个空数组进行测试，在任何情况下它返回的都是 false
+var a15 = [7, 8, 4, 3, 5, 6, 5, 8, 9, 1];
+console.log(a15.some((element) => {
+    return element === 1;
+})); // true
 
 /////////////////////////////////////////////////////////////////
