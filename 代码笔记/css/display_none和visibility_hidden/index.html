@@ -1,0 +1,62 @@
+<!-- 
+    
+    相同点：
+
+    都是元素隐藏
+
+    ----------------
+
+    不同点：
+
+    在文档流中，display:none 不占位置，visibility:hidden 占位置
+
+    性能上，display:none 比 visibility:hidden 差
+
+    display:none 控制显示隐藏时，页面会产生回流
+
+ -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            #container_1 {
+                width: 200px;
+                height: 100px;
+                background-color: beige;
+                display: none;
+            }
+            #container_2 {
+                width: 200px;
+                height: 100px;
+                background-color: gray;
+            }
+            #container_3 {
+                width: 200px;
+                height: 100px;
+                background-color: brown;
+                visibility: hidden;
+            }
+            #container_4 {
+                width: 200px;
+                height: 100px;
+                background-color: teal;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container_1">
+            <h1>Container 1</h1>
+        </div>
+        <div id="container_2">
+            <h1>Container 2</h1>
+        </div>
+        <div id="container_3">
+            <h1>Container 3</h1>
+        </div>
+        <div id="container_4">
+            <h1>Container 4</h1>
+        </div>
+    </body>
+</html>
