@@ -1,0 +1,7 @@
+#canvas-frame {
+    width: 100%;
+    height: 600px;
+    border: 1px solid gray;
+    cursor: pointer;
+    background-color: #ad7f7f;
+}
