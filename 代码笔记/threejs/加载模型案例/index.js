@@ -22,35 +22,38 @@ var camera;
 function initCamera() {
     camera = new THREE.PerspectiveCamera(60, width / height, 1, 10000);
     camera.position.x = 0;
-    camera.position.y = 100;
-    camera.position.z = 500;
+    camera.position.y = 50;
+    camera.position.z = 1000;
 }
 
 // 初始化场景
 var scene;
 function initScene() {
     scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xffffff);
 }
 
 // 初始化灯光
 var light;
 function initLight() {
-    light = new THREE.DirectionalLight(0xFFFFFF, 1.0, 0);
-    light.position.set(100, 100, 200);
-    scene.add(light);
+    light1 = new THREE.AmbientLight(0xFFFFFF, 10.0, 0);
+    light2 = new THREE.DirectionalLight(0xFFFFFF, 12.0, 0);
+    light2.position.set(100, 100, 200);
+    scene.add(light1);
+    scene.add(light2);
 }
 
 // 初始化物体
-var car;
+var earth;
 function initObject() {
     var mtlLoader = new THREE.MTLLoader();
-    mtlLoader.load("./file.mtl", function(material) {
+    mtlLoader.load("./earth/earth.mtl", function(material) {
         material.preload();
         var objLoader = new THREE.OBJLoader();
         objLoader.setMaterials(material);
-        objLoader.load("./file.obj", function(object) {
+        objLoader.load("./earth/earth.obj", function(object) {
             object.position.set(0, 0, 0);
-            car = object;
+            earth = object;
             scene.add(object);
         });
     });
@@ -75,7 +78,7 @@ function threeStart() {
 }
 
 function update() {
-    if (car) {
-        car.rotation.y += 0.02;
+    if (earth) {
+        earth.rotation.y += 0.01;
     }
 }
