@@ -1,0 +1,55 @@
+<!--
+
+    props 是你可以在组件上注册的一些自定义特性
+    
+    当一个值传递给一个 props 特性的时候，它就变成了那个组件实例的一个属性
+
+    一个组件默认可以拥有任意数量的 prop，任何值都可以传递给任何 prop
+    
+    在组件实例中访问这个值，就像访问 data 中的值一样
+
+    ---------------------------
+
+    父组件在 template 使用子组件，子组件用 props 接受数据
+
+    props 默认是单向绑定，当父组件的值改变时会传导给子组件，反过来不会
+
+    这是为了防止子组件无意中改变父组件的状态
+
+    如果需要双向绑定，可以使用 .sync，使得子组件修改数据也会传给父组件
+
+    如果只需要单词绑定，可以使用 .once，意味着除了第一次，父组件修改了数据也不会改变子组件
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <child msg="这是父传子的值"></child>
+            <child v-bind:msg="fatherMsg"></child>
+            <input v-model="fatherMsg">
+        </div>
+        <script>
+            // 子组件
+            Vue.component('child', {
+                props: ['msg'],
+                template: '<h3>{{ msg }}</h3>'
+            })
+            // vue 实例
+            var app = new Vue({
+                el: '#app',
+                data () {
+                    return {
+                        fatherMsg: '这是父传子的动态值'
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
