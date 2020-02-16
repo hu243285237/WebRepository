@@ -2,6 +2,22 @@
 
     $refs 是一个对象，持有已注册过 ref 的所有子组件
 
+    ----------------------
+
+    ref 被用来给元素或子组件注册引用信息，引用信息将会注册在父组件的 $refs 对象上
+
+    如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素
+
+    如果用在子组件上，引用就指向组件实例
+
+    ----------------------
+
+    因为 ref 本身是作为渲染结果被创建的
+
+    所以在初始渲染的时候还不能访问他们，它们还不存在
+
+    $refs 也不是响应式的，因此不应该试图用它在模板中做数据绑定
+
 -->
 
 <!DOCTYPE html>
@@ -11,37 +27,37 @@
         <title>Vue Study Log</title>
         <script src="https://unpkg.com/vue/dist/vue.js"></script>
     </head>
-
     <body>
         <div id="app">
             <navbar ref="navbar"></navbar>
             <pagefooter ref="pagefooter"></pagefooter>
         </div>
-
         <script>
             Vue.component('navbar', {
                 template: '<h1>navbar</h1>',
                 data: function () {
                     return {
-                        navs: [1, 2, 3]
+                        msg: '这是第一个子组件传的值'
                     }
                 }
             })
-
             Vue.component('pagefooter', {
                 template: '<h1>pagefooter</h1>',
                 data: function () {
                     return {
-                        footer: 'qwe'
+                        msg: '这是第二个子组件传的值'
                     }
                 }
             })
-
             var app = new Vue({
                 el: '#app',
                 mounted: function () {
-                    console.log(this.$refs.navbar.navs)
-                    console.log(this.$refs.pagefooter.footer)
+                    // 打印的是各 msg 的值
+                    console.log(this.$refs.navbar.msg)
+                    console.log(this.$refs.pagefooter.msg)
+                    // 打印的是 VueComponent 对象
+                    console.log(this.$refs.navbar)
+                    console.log(this.$refs.pagefooter)
                 }
             })
         </script>
