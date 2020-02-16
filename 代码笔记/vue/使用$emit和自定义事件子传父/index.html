@@ -1,0 +1,44 @@
+<!--
+
+    1. 在父组件中调用子组件时，绑定一个自定义事件和对应的处理函数
+
+    2. 在子组件中把要发送的数据通过 $emit 触发自定义事件传递给父组件
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <child @event="receiveMsg"></child>
+        </div>
+        <script>
+            // 子组件
+            Vue.component('child', {
+                template: `
+                <div>
+                    <h3>这是子组件</h3>
+                    <button @click="sendMsg">点击发送数据</button>
+                </div>`,
+                methods: {
+                    sendMsg: function () {
+                        this.$emit("event", "666")
+                    }
+                }
+            })
+            var app = new Vue({
+                el: '#app',
+                methods: {
+                    receiveMsg: function (msg) {
+                        console.log("子组件传过来的数据：" + msg)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
