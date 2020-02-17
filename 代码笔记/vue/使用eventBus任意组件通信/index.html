@@ -1,0 +1,75 @@
+<!--
+
+    eventBus 这种通信方式针对的是非父子组件之间的通信
+
+    eventBus 是一个定义在 #app 组件上的所有组件都能访问到的组件
+
+    ----------------------------
+
+    它的原理还是通过事件的触发和监听
+
+    使用 $emit 触发事件，使用 $on 监听事件
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <child1></child1>
+            <child2></child2>
+        </div>
+        <script>
+            // 创建 eventBus
+            var bus = new Vue()
+            // 子组件 1
+            Vue.component('child1', {
+                template: `
+                <div>
+                    <h3>这是子组件1</h3>
+                    <button @click="doClick">{{ count1 }}</button>
+                </div>`,
+                data () {
+                    return {
+                        count1: 0
+                    }
+                },
+                methods: {
+                    doClick: function () {
+                        this.count1++;
+                        bus.$emit('btn-click', this.count1);
+                    }
+                }
+            });
+            // 子组件 2
+            Vue.component('child2', {
+                template: `
+                <div>
+                    <h3>这是子组件2</h3>
+                    <div>这是组件1传过来的值 {{ count2 }}</div>
+                </div>`,
+                data () {
+                    return {
+                        count2: 0
+                    }
+                },
+                methods: {
+                    receiveMsg: function (value) {
+                        this.count2 = value;
+                    }
+                },
+                created () {
+                    bus.$on('btn-click', this.receiveMsg);
+                }
+            });
+            var app = new Vue({
+                el: '#app'
+            });
+        </script>
+    </body>
+</html>
