@@ -1,0 +1,59 @@
+<!--
+
+    自定义全局指令用 Vue.directive 方法，有两个参数
+
+    第一个参数为定义的指令名字
+
+    第二个参数为一个对象，包含该指令的钩子函数
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p>进入页面时会自动获取这个输入框的焦点</p>
+            <input v-focus>
+        </div>
+        <script>
+            // 示例模板
+            Vue.directive("example", {
+                // 当指令第一次绑定到元素时调用，只调用一次，可以用来执行初始化操作
+                bind: function () {
+                    console.log("bind");
+                },
+                // 被绑定有自定义元素插入到 DOM 时调用
+                inserted: function () {
+                    console.log("inserted");
+                },
+                // 当被绑定的元素所在模板更新时调用
+                update: function () {
+                    console.log("update");
+                },
+                // 当被绑定的元素所在模板完成一次更新时调用
+                componentUpdated: function () {
+                    console.log("componentUpdated");
+                },
+                // 当指令和元素解绑的时候调用，只执行一次
+                unbind: function () {
+                    console.log("unbind");
+                }
+            })
+            // 注册一个全局指令 v-focus，将元素选为焦点
+            Vue.directive("focus", {
+                inserted: function (el) {
+                    el.focus();
+                }
+            });
+            // Vue 实例
+            var app = new Vue({
+                el: '#app'
+            });
+        </script>
+    </body>
+</html>
