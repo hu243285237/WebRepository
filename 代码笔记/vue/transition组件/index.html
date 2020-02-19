@@ -1,0 +1,57 @@
+<!--
+
+    Vue 提供了实现过度动画的内置组件 transition
+
+    基本用法是在动画的标签外面嵌套 transition 标签，并且加上属性
+
+    Vue 提供了 6 个 CSS 类名，在 enter/leave 中切换：
+
+    v-enter     v-enter-active      v-enter-to
+
+    v-leave     v-leave-active      v-leave-to
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <style>
+            /* 显示时的动画 */
+            .v-enter {
+                opacity: 0;
+            }
+            .v-enter-active {
+                transition: opacity 0.5s;
+            }
+            /* 隐藏时的动画 */
+            .v-leave-active {
+                transition: transform 0.5s;
+            }
+            .v-leave-to {
+                transform: translateX(10px);
+            }
+        </style>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p>点击显示或隐藏元素</p>
+            <button @click="isShow=!isShow">点击</button>
+            <transition>
+                <p v-if="isShow">会渐变的哦！</p>
+            </transition>
+        </div>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data () {
+                    return {
+                        isShow: false
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
