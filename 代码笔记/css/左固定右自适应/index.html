@@ -1,0 +1,95 @@
+<!-- 
+
+    左边固定，右边自适应的几种方法
+
+    --------------------------
+
+    方法一：
+    
+    左边 float: left，右边 margin-left: 左边的宽度
+
+    ---------------------------
+
+    方法二：
+
+    左右都 float，右边 width: calc(100% - 左边的宽度)
+
+    calc 是 calculate 的缩写，用于动态计算长度值
+
+    calc 函数支持 +-*/ 运算
+
+    ---------------------------
+
+    方法三：
+
+    flex 布局，父节点 display: flex，width: 100%，row 对齐方式
+
+    左边固定宽度，右边 flex: 1
+
+ -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            /* 第一种方法 */
+            #left1 {
+                width: 200px;
+                float: left;
+                background-color: brown;
+            }
+            #right1 {
+                margin-left: 200px;
+                background-color: cadetblue;
+            }
+            /* 第二种方法 */
+            #left2 {
+                width: 300px;
+                float: left;
+                background-color: chocolate;
+            }
+            #right2 {
+                width: calc(100% - 300px);
+                float: left;
+                background-color: cornflowerblue;
+            }
+            /* 第三种方法 */
+            #father3 {
+                width: 100%;
+                display: flex;
+                flex-direction: row; /* 方向：水平 */
+                justify-content: center; /* 对齐方式：居中 */
+                background-color: darkgrey;
+            }
+            #left3 {
+                width: 400px;
+                background-color: lightblue;
+            }
+            #right3 {
+                flex: 1; /* 1 以上会铺满右边全部，即自适应 */
+                background-color: greenyellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div id="left1">123</div>
+            <div id="right1">456</div>
+        </div>
+        <div>
+            <div id="left2">123</div>
+            <div id="right2">456</div>
+        </div>
+        <div id="father3">
+            <div id="left3">123</div>
+            <div id="right3">456</div>
+        </div>
+    </body>
+</html>
