@@ -1,0 +1,170 @@
+<!-- 
+
+    清除浮动主要为了解决父级元素因为子级浮动引起内部高度为 0 的问题
+
+    -----
+
+    方法一：给父级设置 height
+
+    缺点：只适合高度固定的布局，要给出精确的值才行
+
+    -----
+
+    方法二：在父盒子里面最后添加一个 div，并将其设置为 clear: both
+
+    缺点：添加了无意义标签，语义化差
+
+    -----
+
+    方法三：使用 after 伪元素清除浮动
+
+    强烈推荐
+
+    -----
+
+    方法四：使用双伪元素清除浮动
+
+    强烈推荐
+
+ -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            #space {
+                height: 300px;
+            }
+            /* 没清除浮动的 */
+            #father1 {
+                border: 2px solid;
+            }
+            #child1_A {
+                width: 100px;
+                height: 100px;
+                float: left;
+                background-color: cadetblue;
+            }
+            #child1_B {
+                width: 200px;
+                height: 200px;
+                float: left;
+                background-color: coral;
+            }
+            /* 方法一 */
+            #father2 {
+                height: 200px;
+                border: 2px solid;
+            }
+            #child2_A {
+                width: 100px;
+                height: 100px;
+                float: left;
+                background-color: cadetblue;
+            }
+            #child2_B {
+                width: 200px;
+                height: 200px;
+                float: left;
+                background-color: coral;
+            }
+            /* 方法二 */
+            #father3 {
+                border: 2px solid;
+            }
+            #child3_A {
+                width: 100px;
+                height: 100px;
+                float: left;
+                background-color: cadetblue;
+            }
+            #child3_B {
+                width: 200px;
+                height: 200px;
+                float: left;
+                background-color: coral;
+            }
+            #child3_C {
+                clear: both;
+            }
+            /* 方法三 */
+            #father4 {
+                border: 2px solid;
+            }
+            #father4::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+            #child4_A {
+                width: 100px;
+                height: 100px;
+                float: left;
+                background-color: cadetblue;
+            }
+            #child4_B {
+                width: 200px;
+                height: 200px;
+                float: left;
+                background-color: coral;
+            }
+            /* 方法四 */
+            #father5 {
+                border: 2px solid;
+            }
+            #father5::after, #father5::before {
+                content: "";
+                display: table;
+            }
+            #father5::after {
+                clear: both;
+            }
+            #child5_A {
+                width: 100px;
+                height: 100px;
+                float: left;
+                background-color: cadetblue;
+            }
+            #child5_B {
+                width: 200px;
+                height: 200px;
+                float: left;
+                background-color: coral;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 这是没有清除浮动的 -->
+        <div id="father1">
+            <div id="child1_A">child_A</div>
+            <div id="child1_B">child_B</div>
+        </div>
+        <div id="space"></div>
+        <!-- 方法一 -->
+        <div id="father2">
+            <div id="child2_A">child_A</div>
+            <div id="child2_B">child_B</div>
+        </div>
+        <div id="space"></div>
+        <!-- 方法二 -->
+        <div id="father3">
+            <div id="child3_A">child_A</div>
+            <div id="child3_B">child_B</div>
+            <div id="child3_C"></div>
+        </div>
+        <div id="space"></div>
+        <!-- 方法三 -->
+        <div id="father4">
+            <div id="child4_A">child_A</div>
+            <div id="child4_B">child_B</div>
+        </div>
+        <div id="space"></div>
+        <!-- 方法四 -->
+        <div id="father5">
+            <div id="child5_A">child_A</div>
+            <div id="child5_B">child_B</div>
+        </div>
+        <div id="space"></div>
+    </body>
+</html>
