@@ -1,0 +1,32 @@
+<!--
+
+    params 只能用 name 来引入路由，而不能用 path
+
+    比如
+    
+    this.$router.push({ name: 'Home', params: { id: 1 } }) 是正确的
+
+    this.$router.push({ path: '/Home', params: { id: 1 } }) 是错误的
+
+    ----------------------------------------
+
+    query 既可以用 name 引入，也可以用 path 引入
+
+    ----------------------------------------
+
+    query 会在浏览器地址栏中显示参数，而 params 不会
+
+    刷新时 params 参数会消失，query 不会
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Study Log</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+    </body>
+</html>
