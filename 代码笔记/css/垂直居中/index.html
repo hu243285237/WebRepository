@@ -8,22 +8,63 @@
                 height: 100%;
                 margin: 0;
                 padding: 0;
-                position: relative;
             }
-            #container {
+            /* 
+            
+                方法一：子绝父相
+                
+                并且子设置 left: 50% 和 top: 50%
+                
+                transform: translate(-50%, -50%)
+            
+             */
+            #parent1 {
                 width: 100%;
-                text-align: center;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
+                height: 400px;
+                position: relative;
                 background-color: beige;
+            }
+            #child1 {
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                position: absolute;
+                background-color: aquamarine;
+            }
+            /* 
+            
+                方法二：Flex 布局
+                
+                父元素设置垂直和水平的对齐方式都为 center
+            
+             */
+             #parent2 {
+                width: 100%;
+                height: 400px;
+                display: flex;
+                align-items: center; /* 垂直对齐方式 */
+                justify-content: center; /* 水平对齐方式 */
+                background-color: rgb(185, 185, 101);
+            }
+            #child2 {
+                background-color: rgb(96, 167, 143);
             }
         </style>
     </head>
     <body>
-        <div id="container">
-            <h1>IT IS TITLE</h1>
-            <p>it is paragraph</p>
+        <!-- 方法一 -->
+        <div id="parent1">
+            <div id="child1">
+                <h1>IT IS TITLE</h1>
+                <p>it is paragraph</p>
+            </div>
+        </div>
+        <!-- 方法二 -->
+        <div id="parent2">
+            <div id="child2">
+                <h1>IT IS TITLE</h1>
+                <p>it is paragraph</p>
+            </div>
         </div>
     </body>
 </html>
