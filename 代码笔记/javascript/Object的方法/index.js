@@ -92,3 +92,12 @@ console.log(Object.keys(a3)); // [ "name1", "name2" ]
 console.log(Object.values(a3)); // [ "qwe", "asd" ]
 
 ///////////////////////////////////////////////////////////////////////////////////////
+
+// Object.creat(proto, [properiesObject])
+// 参数 proto 为必须，后一个参数为可选
+// 此方法返回一个新对象，使用现有的对象（即 proto）来提供新对象的 __proto__
+// 所以说，返回的就是 { __proto__ }，然后这个 __proto__ 等于参数提供的 proto
+var b4 = { school: "sd" };
+var a4 = { age: 18 };
+a4.ppp = Object.create(b4);
+console.log(a4); // { age, ppp, __proto__ }
