@@ -57,3 +57,19 @@ XSS 分为 ‘反射型XSS’ 和 '存储型XSS'
 2. 对插入到页面上的敏感字符进行过滤
 
 3. 禁止 'javascript' 'eval' 这些关键词
+
+***
+
+### CSRF
+
+Cross Site Request Forgery 跨站请求伪造
+
+请注意这里的 ‘请求’
+
+不管用什么方法，只要是伪造用户发起的请求都可以称为 CSRF
+
+1. 用户登录银行网站，得到 session
+
+2. 用户不小心访问恶意网站
+
+3. 利用之前登录得到的 session，恶意网站执行请求 post('www.bank.com/转钱给黑客')
