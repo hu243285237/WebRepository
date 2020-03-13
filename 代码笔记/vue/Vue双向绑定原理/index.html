@@ -8,6 +8,12 @@
 
     Vue 双向绑定是通过 “数据劫持” + “发布订阅模式” 实现的
 
+    --------------------------------
+
+    这里实现的功能有：
+
+    v-modeld、{{ }}
+
 -->
 
 <!DOCTYPE html>
@@ -21,7 +27,13 @@
             <input v-model="message" type="text">
             {{ message }}
             <br>
-            {{ message }}
+            <p id="pp">{{ message }}</p>
+            <div id="div1">
+                {{ message }}
+                <p id="pp2">{{ message }}</p>
+            </div>
+            <p>123</p>
+            <input v-model="message" type="text">
         </div>
 
         <script src="./observer.js"></script>
@@ -30,7 +42,7 @@
         <script src="./vue.js"></script>
         <script>
             let vm = new Vue({
-                el: 'app',
+                el: '#app',
                 data: {
                     message: 'hello'
                 }
