@@ -26,8 +26,8 @@ function compile(node, vm) {
 
 // 解析元素节点
 function compileElement(node, vm) {
-    // 如果是 input 标签
-    if (node.tagName === 'INPUT') {
+    // 如果是 input 标签或者 textarea 标签
+    if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
         // 解析这个元素的所有属性
         for (let attr of node.attributes) {
             // 如果这个属性是 v-model
@@ -43,13 +43,14 @@ function compileElement(node, vm) {
                 node.value = vm[name];
                 // 移除 v-model 这个属性
                 node.removeAttribute('v-model');
+                // 绑定一个订阅者
                 new Watcher(vm, node, name);
             }
         }
     }
     // 如果是其他标签，比如 div、p 等
     else {
-        // 编译他们的子节点
+        // 递归编译他们的子节点
         for (let child of node.childNodes) {
             compile(child, vm);
         }

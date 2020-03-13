@@ -12,7 +12,9 @@
 
     这里实现的功能有：
 
-    v-modeld、{{ }}
+    input 和 textarea 标签的 v-model
+    
+    文本的 {{ }} 数据绑定
 
 -->
 
@@ -24,11 +26,25 @@
     </head>
     <body>
         <div id="app">
-            <input v-model="message" type="text">
-            <div id="div1">
-                <p id="pp2">{{ message }}</p>
+            <input v-model="message">
+            <div>
+                <p>{{ message }}</p>
             </div>
-            <input v-model="message" type="text">
+            <input v-model="message">
+            <div>
+                <br>
+                <textarea v-model="message"></textarea>
+            </div>
+            {{ message }}
+            <div>
+                <p>{{ number }}</p>
+                <input v-model="number">
+            </div>
+            <div>
+                <div>
+                    <p>{{ number }}</p>
+                </div>
+            </div>
         </div>
 
         <script src="./observer.js"></script>
@@ -36,10 +52,11 @@
         <script src="./compile.js"></script>
         <script src="./vue.js"></script>
         <script>
-            let vm = new Vue({
+            var app = new Vue({
                 el: '#app',
                 data: {
-                    message: 'hello'
+                    message: '我厉害吗',
+                    number: 1234567
                 }
             });
         </script>
