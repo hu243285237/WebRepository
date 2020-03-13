@@ -14,7 +14,13 @@ class Watcher {
 
     // 当数据更新时 dep 会通知所有 watcher 执行这个 update 函数
     update() {
-        // 更新这个监听节点的值（视图）
-        this.node.nodeValue = this.vm[this.name];
+        // 如果是元素节点
+        if (this.node.nodeType === 1) {
+            this.node.value = this.vm[this.name];
+        }
+        // 如果是文本节点
+        else if (this.node.nodeType === 3){
+            this.node.nodeValue = this.vm[this.name];
+        }
     }
 }

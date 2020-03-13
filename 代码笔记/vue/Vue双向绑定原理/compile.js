@@ -43,6 +43,7 @@ function compileElement(node, vm) {
                 node.value = vm[name];
                 // 移除 v-model 这个属性
                 node.removeAttribute('v-model');
+                new Watcher(vm, node, name);
             }
         }
     }
