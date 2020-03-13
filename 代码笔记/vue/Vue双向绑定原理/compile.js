@@ -13,6 +13,7 @@ function nodeToFragment(node, vm) {
     return fragment;
 }
 
+// 解析节点
 function compile(node, vm) {
     // 如果是元素节点，比如 input、div、p 标签等
     if (node.nodeType === 1) {
@@ -28,29 +29,29 @@ function compile(node, vm) {
 function compileElement(node, vm) {
     // 如果是 input 标签或者 textarea 标签
     if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
-        // 解析这个元素的所有属性
+        // 遍历这个元素的所有属性
         for (let attr of node.attributes) {
             // 如果这个属性是 v-model
             if (attr.nodeName === 'v-model') {
                 // 检测绑定的数据名称，即 v-model="name" 的 name
                 let name = attr.nodeValue;
-                // 给这个 input 添加事件
+                // 给这个 input 或 textarea 添加事件
                 node.addEventListener('input', e => {
                     // 更改 vue 实例上的数据为这个 input 里的数据
                     vm[name] = e.target.value;
                 });
-                // 将 data 中的值赋予给该 node
+                // 初始化此节点的值
                 node.value = vm[name];
                 // 移除 v-model 这个属性
                 node.removeAttribute('v-model');
-                // 绑定一个订阅者
+                // 给这个节点绑定一个订阅者，否则当别的 input 更新时收不到数据
                 new Watcher(vm, node, name);
             }
         }
     }
     // 如果是其他标签，比如 div、p 等
     else {
-        // 递归编译他们的子节点
+        // 递归解析他们的子节点
         for (let child of node.childNodes) {
             compile(child, vm);
         }
@@ -63,11 +64,11 @@ function compileText(node, vm) {
     let reg = /\{\{(.*)\}\}/;
     // 如果这个文本里有 {{ xxx }} 这样的文本
     if (reg.test(node.nodeValue)) {
-        // 获取匹配到的第一个字符串
+        // 获取匹配到的第一个字符串，比如 “  message”
         let name = RegExp.$1;
-        // 去掉字符串的首尾空格
+        // 去掉字符串的首尾空格，“message”
         name = name.trim();
-        // 初始化文本节点的值
+        // 初始化此节点的值
         node.nodeValue = vm[name];
         // 绑定一个订阅者
         new Watcher(vm, node, name);
