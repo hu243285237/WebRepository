@@ -39,3 +39,33 @@ console.log(window.history);
 console.log(window.navigator);
 console.log(window.screen);
 console.log(window.document);
+
+/*
+
+    window.innerWidth 和 window.innerHeight
+
+    返回窗口文档显示区的宽度和高度
+
+    会跟随浏览器的放大缩小而不同
+
+    IE 8 及以前的版本不支持此属性
+
+*/
+
+console.log(window.innerWidth);
+console.log(window.innerHeight);
+
+/*
+
+    window.outerWidth 和 window.outerHeight
+
+    返回窗口的外部高度，包括所有界面元素（如工具栏、滚动条）
+
+    会跟随浏览器的放大缩小而不同
+
+    IE 8 及以前的版本不支持此属性
+
+*/
+
+console.log(window.outerWidth);
+console.log(window.outerHeight);
