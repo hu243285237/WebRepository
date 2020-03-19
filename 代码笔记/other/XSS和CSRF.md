@@ -1,6 +1,10 @@
+XSS（反射型）是将 A 网站的 Cookie 发到 B 网站
+
+CSRF 是利用 B 网站攻击 A 网站
+
 ## XSS
 
-全称 Cross Stie Scripting
+全称 Cross Site Scripting
 
 为了和 CSS 样式表进行区分，所以叫做 XSS
 
@@ -50,7 +54,7 @@ XSS 分为 ‘反射型XSS’ 和 '存储型XSS'
 
 其他用户访问这篇文章时都会被 XSS 攻击
 
-## 防范
+### XSS 防范
 
 1. 对插入到页面上的敏感字符进行转义 （使用 escapeHtml 这个函数）
 
@@ -58,9 +62,9 @@ XSS 分为 ‘反射型XSS’ 和 '存储型XSS'
 
 3. 禁止 'javascript' 'eval' 这些关键词
 
-***
+---
 
-### CSRF
+## CSRF
 
 Cross Site Request Forgery 跨站请求伪造
 
@@ -73,3 +77,13 @@ Cross Site Request Forgery 跨站请求伪造
 2. 用户不小心访问恶意网站
 
 3. 利用之前登录得到的 session，恶意网站执行请求 post('www.bank.com/转钱给黑客')
+
+### CSRF 防范
+
+1. 验证 HTTP Referer 字段
+
+HTTP 请求头有个字段叫 Referer，记录了该 HTTP 请求的来源地址，假如用户访问银行网站，Referer 值一般都是以 www.bank.com 为开头，而黑客的网站发送伪造请求时 Referer 是黑客自己的恶意网站地址，因此可以后端验证 Referer 是不是以 www.bank.com 为开头的域名，如果是的话，就说明是合法的。
+
+2. 在请求地址中添加 token 并验证
+
+CSRF 之所以能成功，是因为请求中所有的用户验证信息都存在 cookie 中，要抵御 CSRF 关键在于在请求中放入黑客所不能伪造的信息，并且该信息不存放在 cookie，就可以使用 token。
