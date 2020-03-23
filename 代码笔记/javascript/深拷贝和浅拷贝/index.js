@@ -41,3 +41,27 @@ b3[0] = 666;
 
 console.log(a3); // [1, 2, 3]
 console.log(b3); // [666, 2, 3]
+
+//-----------------------------------------------
+
+// 完全深拷贝
+
+function deepClone (obj) {
+    if (typeof obj !== 'object') {
+        return obj;
+    }
+    let copyObj = obj instanceof Array ? [] : {};
+    for (let key in obj) {
+        copyObj[key] = deepClone(obj[key]);
+    }
+    return copyObj;
+}
+
+var a4 = [{ class: '1-1' }, { class: '2-2' }];
+var b4 = deepClone(a4);
+
+a4[0].class = '5-5';
+b4[1].class = '8-8';
+
+console.log(a4); // [{ class: '5-5' }, { class: '2-2' }]
+console.log(b4); // [{ class: '1-1' }, { class: '8-8' }]
